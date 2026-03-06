@@ -22,8 +22,6 @@ jobs:
       - name: Build all projects
         id: build
         run: |
-          # 创建公共目录 public
-          mkdir -p public
           # 遍历所有一级目录
           for dir in */; do
             if [ -f "${dir}package.json" ]; then
@@ -31,9 +29,19 @@ jobs:
               cd "$dir"
               npm install
               npm run build
-              rm dist $(basename "$dir")
-              cp -r "dist" "../public"
               cd ..
+            fi
+          done
+
+          mkdir -p public   # 确保 public 目录存在
+          for dir in */; do
+            project_name=$(basename "$dir")   # 去掉末尾斜杠，得到纯目录名
+            if [ -d "${dir}dist" ]; then
+              echo "Moving contents of $dir/dist to public/$project_name/"
+              # 创建目标目录
+              mkdir -p "public/$project_name"
+              # 移动 dist 下的所有内容（包括隐藏文件）到目标目录
+              mv "${dir}dist"/* "public/$project_name/" 2>/dev/null || true
             fi
           done
 
