@@ -1,36 +1,59 @@
-name: Build All Subprojects
+name: Build and Deploy to GitHub Pages
 
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
-  workflow_dispatch:   # 允许手动触发
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'   # 可根据需要调整版本
+          node-version: 18
 
-      - name: Build projects in top-level directories
+      - name: Build all projects
         run: |
           # 遍历所有一级目录
           for dir in */; do
             if [ -f "${dir}package.json" ]; then
-              echo "✅ Found package.json in $dir, running build..."
+              echo "Building $dir..."
               cd "$dir"
-              npm install      # 安装依赖，若项目有 package-lock.json 可改用 npm ci
+              npm install
               npm run build
               cd ..
-            else
-              echo "⏭️ No package.json in $dir, skipping."
             fi
           done
+
+      - name: Collect build outputs
+        run: |
+          # 创建公共目录 public
+          mkdir -p public
+
+          # 遍历所有一级目录
+          for dir in */; do
+            # 去掉末尾的斜杠，得到目录名（例如 "项目A/" → "项目A"）
+            project_name=$(basename "$dir")
+            if [ -d "${dir}dist" ]; then
+              echo "Copying $project_name/dist to public/$project_name/"
+              # 将 dist 内容复制到 public/项目名/
+              cp -r "${dir}dist" "public/$project_name"
+            else
+              echo "⚠️ No dist folder in $dir, skipping."
+            fi
+          done
+
+          # 可选：如果需要根目录访问，可以在 public 下放一个 index.html 或重定向
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public   # 部署合并后的 public 目录
