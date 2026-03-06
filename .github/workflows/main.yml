@@ -1,0 +1,36 @@
+name: Build All Subprojects
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:   # 允许手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'   # 可根据需要调整版本
+
+      - name: Build projects in top-level directories
+        run: |
+          # 遍历所有一级目录
+          for dir in */; do
+            if [ -f "${dir}package.json" ]; then
+              echo "✅ Found package.json in $dir, running build..."
+              cd "$dir"
+              npm install      # 安装依赖，若项目有 package-lock.json 可改用 npm ci
+              npm run build
+              cd ..
+            else
+              echo "⏭️ No package.json in $dir, skipping."
+            fi
+          done
