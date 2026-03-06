@@ -31,8 +31,8 @@ jobs:
               cd "$dir"
               npm install
               npm run build
-              project_name=$(basename "$dir")
-              cp -r "dist" "public/$project_name"
+              rm dist $(basename "$dir")
+              cp -r "dist" "../public"
               cd ..
             fi
           done
