@@ -1,3 +1,5 @@
 node_modules
 useData
 data_pak
+dist
+*.js

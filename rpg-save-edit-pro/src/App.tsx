@@ -730,7 +730,7 @@ function App() {
         let loadedText: string | null = null;
 
         for (const filename of config.aliases) {
-          const candidates = [`/data/${filename}`, `./data/${filename}`];
+          const candidates = [`./data/${filename}`, `./data/${filename}`];
           for (const path of candidates) {
             try {
               const response = await fetch(path, { cache: "no-store" });
