@@ -52,8 +52,7 @@ jobs:
 
           # 可选：如果需要根目录访问，可以在 public 下放一个 index.html 或重定向
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload static files as artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public   # 部署合并后的 public 目录
+          path: ./public   # 部署合并后的 public 目录
