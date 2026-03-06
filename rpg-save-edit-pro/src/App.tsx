@@ -87,16 +87,16 @@ const CATALOG_RENDER_BATCH = 2000;
 
 const DB_FILE_CONFIG: Array<{ kind: DbKind; label: string; aliases: [string, string] }> = [
   { kind: "items", label: "Items.json", aliases: ["Items.json", "items.json"] },
-  { kind: "weapons", label: "Weapons.json", aliases: ["Weapons.json", "weapons.json"] },
-  { kind: "armors", label: "Armors.json", aliases: ["Armors.json", "armors.json"] },
+  // { kind: "weapons", label: "Weapons.json", aliases: ["Weapons.json", "weapons.json"] },
+  // { kind: "armors", label: "Armors.json", aliases: ["Armors.json", "armors.json"] },
   { kind: "actors", label: "Actors.json", aliases: ["Actors.json", "actors.json"] },
   { kind: "skills", label: "Skills.json", aliases: ["Skills.json", "skills.json"] },
 ];
 
 const CATALOG_TABS: Array<{ kind: CatalogKind; label: string }> = [
   { kind: "items", label: "物品" },
-  { kind: "weapons", label: "武器" },
-  { kind: "armors", label: "护甲" },
+  // { kind: "weapons", label: "武器" },
+  // { kind: "armors", label: "护甲" },
   { kind: "actors", label: "角色" },
   { kind: "skills", label: "技能" },
 ];
