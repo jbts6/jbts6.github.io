@@ -2,9 +2,9 @@ name: Build All Subprojects
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:   # 允许手动触发
 
 jobs:
