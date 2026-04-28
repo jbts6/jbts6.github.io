@@ -1,0 +1,23 @@
+.ant-layout {
+  background: transparent !important;
+}
+
+.ant-layout-header {
+  padding-inline: 16px !important;
+}
+
+.ant-tree {
+  background: transparent !important;
+}
+
+.ant-tree .ant-tree-node-content-wrapper:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected {
+  background: linear-gradient(
+      135deg,
+      rgba(140, 255, 234, 0.16),
+      rgba(167, 139, 250, 0.12)
+    ) !important;
+}
