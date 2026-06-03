@@ -1,0 +1,570 @@
+:root {
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --surface-2: #f0f6ff;
+  --line: #d8e2ec;
+  --line-strong: #b9c7d6;
+  --text: #102033;
+  --muted: #607085;
+  --primary: #1d4ed8;
+  --primary-2: #2563eb;
+  --accent: #0f766e;
+  --danger: #c2410c;
+  --warning: #b45309;
+  --shadow: 0 14px 34px rgba(15, 23, 42, .08);
+  color-scheme: light;
+  font-family: "Microsoft YaHei UI", "Segoe UI", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  color: var(--text);
+  background:
+    linear-gradient(135deg, rgba(29, 78, 216, .08), transparent 32%),
+    linear-gradient(315deg, rgba(15, 118, 110, .07), transparent 34%),
+    var(--bg);
+  overflow: hidden;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  min-height: 36px;
+  border: 1px solid var(--line-strong);
+  border-radius: 7px;
+  background: #ffffff;
+  color: var(--text);
+  padding: 0 14px;
+  cursor: pointer;
+  transition: background .16s ease, border-color .16s ease, color .16s ease, box-shadow .16s ease;
+}
+
+button:hover {
+  border-color: var(--primary-2);
+  color: var(--primary);
+  background: #f7fbff;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, .10);
+}
+
+button:active {
+  background: #eef5ff;
+}
+
+button.primary {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 800;
+}
+
+button.primary:hover {
+  background: #1e40af;
+  color: #ffffff;
+}
+
+input,
+select {
+  width: 100%;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #ffffff;
+  color: var(--text);
+  outline: none;
+  padding: 0 10px;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary-2);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .12);
+}
+
+label {
+  display: grid;
+  gap: 7px;
+}
+
+label span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  min-width: 980px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 76px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, .94);
+  backdrop-filter: blur(10px);
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+h1 {
+  margin: 4px 0 0;
+  color: #0f172a;
+  font-size: 24px;
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status {
+  display: grid;
+  place-items: center;
+  min-width: 92px;
+  min-height: 34px;
+  border: 1px solid rgba(15, 118, 110, .32);
+  border-radius: 999px;
+  background: #ecfdf5;
+  color: var(--accent);
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.status-error {
+  border-color: rgba(194, 65, 12, .28);
+  background: #fff7ed;
+  color: var(--danger);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 328px minmax(0, 1fr);
+  gap: 16px;
+  min-height: 0;
+  padding: 16px;
+}
+
+.side-panel {
+  display: grid;
+  grid-template-rows: auto auto minmax(80px, 1fr);
+  gap: 12px;
+  min-height: 0;
+}
+
+.panel,
+.editor-panel {
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: var(--shadow);
+  padding: 14px;
+}
+
+.panel-title {
+  min-height: 24px;
+  margin-bottom: 12px;
+  color: #0f3f8c;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.meta-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.meta-list div {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+
+.meta-list div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.meta-list dt {
+  color: var(--muted);
+}
+
+.meta-list dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 12px;
+}
+
+.control-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.error-panel {
+  align-self: start;
+  border-color: rgba(194, 65, 12, .22);
+  background: #fff7ed;
+  color: var(--danger);
+  overflow-wrap: anywhere;
+}
+
+.editor-panel {
+  padding: 0;
+  overflow: hidden;
+}
+
+.editor-host {
+  width: 100%;
+  height: 100%;
+}
+
+.jsoneditor {
+  border: 0 !important;
+  background: #ffffff;
+  color: var(--text);
+}
+
+.jsoneditor input,
+.jsoneditor input:not([type]),
+.jsoneditor input[type=text],
+.jsoneditor input[type=search],
+.jsoneditor select {
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  border: inherit !important;
+  border-radius: 0 !important;
+  background: inherit !important;
+  box-shadow: none !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  padding: inherit !important;
+  transition: none !important;
+}
+
+.jsoneditor input:focus,
+.jsoneditor input:not([type]):focus,
+.jsoneditor input[type=text]:focus,
+.jsoneditor input[type=search]:focus,
+.jsoneditor select:focus {
+  border: inherit !important;
+  box-shadow: inherit !important;
+  outline: none !important;
+}
+
+.jsoneditor div.jsoneditor-tree button.jsoneditor-button {
+  width: 24px !important;
+  height: 24px !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.jsoneditor div.jsoneditor-tree button.jsoneditor-button:hover,
+.jsoneditor div.jsoneditor-tree button.jsoneditor-button:focus,
+.jsoneditor div.jsoneditor-tree button.jsoneditor-button:active {
+  border: 0 !important;
+  background-color: #f1f5f9 !important;
+  box-shadow: none !important;
+}
+
+.jsoneditor > .jsoneditor-menu {
+  height: 36px !important;
+  padding: 4px !important;
+  background: linear-gradient(90deg, #1d4ed8, #2563eb) !important;
+  border-bottom: 1px solid #1e40af !important;
+  color: #ffffff !important;
+}
+
+.jsoneditor > .jsoneditor-menu > button,
+.jsoneditor > .jsoneditor-menu > .jsoneditor-modes > button {
+  width: 26px !important;
+  height: 26px !important;
+  min-height: 26px !important;
+  margin: 1px 2px !important;
+  padding: 0 !important;
+  border-color: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.jsoneditor > .jsoneditor-menu > .jsoneditor-modes {
+  height: 28px !important;
+}
+
+.jsoneditor > .jsoneditor-menu > .jsoneditor-modes > button {
+  width: auto !important;
+  padding: 0 9px !important;
+  border-radius: 5px !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.jsoneditor > .jsoneditor-menu > button:hover,
+.jsoneditor > .jsoneditor-menu > .jsoneditor-modes > button:hover {
+  border-color: rgba(255, 255, 255, .46) !important;
+  background-color: rgba(255, 255, 255, .18) !important;
+  box-shadow: none !important;
+}
+
+.jsoneditor > .jsoneditor-menu > button:focus,
+.jsoneditor > .jsoneditor-menu > button:active,
+.jsoneditor > .jsoneditor-menu > .jsoneditor-modes > button:focus,
+.jsoneditor > .jsoneditor-menu > .jsoneditor-modes > button:active {
+  background-color: rgba(255, 255, 255, .24) !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, .28) !important;
+}
+
+.jsoneditor > .jsoneditor-menu > button:disabled,
+.jsoneditor > .jsoneditor-menu > .jsoneditor-modes > button:disabled {
+  opacity: .45 !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.jsoneditor-contextmenu {
+  z-index: 20 !important;
+  color: #334155 !important;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu {
+  width: 142px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 5px !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, .16) !important;
+  color: #334155 !important;
+  overflow: visible !important;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu li {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu button {
+  width: 132px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 8px 0 0 !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #334155 !important;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  text-align: left !important;
+  transition: background .12s ease, color .12s ease !important;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu button.jsoneditor-default {
+  width: 100px !important;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu button.jsoneditor-expand {
+  width: 32px !important;
+  height: 24px !important;
+  border-left: 1px solid var(--line) !important;
+  border-radius: 0 6px 6px 0 !important;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu button:hover,
+.jsoneditor-contextmenu .jsoneditor-menu button:focus {
+  background: #eff6ff !important;
+  color: #0f3f8c !important;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu li button.jsoneditor-selected,
+.jsoneditor-contextmenu .jsoneditor-menu li button.jsoneditor-selected:hover,
+.jsoneditor-contextmenu .jsoneditor-menu li button.jsoneditor-selected:focus {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+}
+
+.jsoneditor-contextmenu .jsoneditor-text {
+  min-height: 24px;
+  padding: 4px 0 4px 28px !important;
+  line-height: 16px !important;
+}
+
+.jsoneditor-contextmenu .jsoneditor-text.jsoneditor-right-margin {
+  padding-right: 24px !important;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu li ul {
+  width: 142px !important;
+  left: -5px !important;
+  margin: 4px 0 !important;
+  padding: 5px !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 8px !important;
+  background: #f8fafc !important;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, .03) !important;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu li ul li button {
+  width: 132px !important;
+  padding-left: 28px !important;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu li ul .jsoneditor-icon {
+  margin-left: 0 !important;
+}
+
+.jsoneditor-contextmenu .jsoneditor-separator {
+  border-top-color: var(--line) !important;
+}
+
+.jsoneditor-search {
+  top: 5px !important;
+  right: 7px !important;
+  height: 26px !important;
+  align-items: center;
+}
+
+.jsoneditor-frame {
+  height: 26px !important;
+  border: 1px solid rgba(15, 63, 140, .22) !important;
+  border-radius: 6px !important;
+  background: #ffffff !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, .12);
+  color-scheme: light;
+  overflow: hidden;
+}
+
+.jsoneditor-frame:focus-within {
+  border-color: rgba(29, 78, 216, .58) !important;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, .18), 0 1px 3px rgba(15, 23, 42, .12);
+}
+
+.jsoneditor > .jsoneditor-menu .jsoneditor-search input,
+.jsoneditor-search input {
+  width: 132px !important;
+  height: 22px !important;
+  min-height: 0 !important;
+  margin: 1px !important;
+  padding: 0 6px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #0f172a !important;
+  caret-color: var(--primary) !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+.jsoneditor > .jsoneditor-menu .jsoneditor-search input::selection,
+.jsoneditor-search input::selection {
+  background: rgba(37, 99, 235, .22);
+  color: #0f172a;
+  -webkit-text-fill-color: #0f172a;
+}
+
+.jsoneditor-search button {
+  width: 18px !important;
+  height: 24px !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  opacity: .92 !important;
+}
+
+.jsoneditor-search button:hover,
+.jsoneditor-search button:focus {
+  background-color: rgba(29, 78, 216, .10) !important;
+  opacity: 1 !important;
+}
+
+.jsoneditor-results {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 6px rgba(30, 64, 175, .22);
+}
+
+.jsoneditor-navigation-bar,
+.jsoneditor-statusbar {
+  background: #ffffff !important;
+  border-color: var(--line) !important;
+  color: var(--muted) !important;
+}
+
+.jsoneditor-tree,
+.jsoneditor textarea,
+.jsoneditor input {
+  font-family: "Cascadia Mono", Consolas, monospace !important;
+}
+
+.jsoneditor-field,
+.jsoneditor-value {
+  color: var(--text) !important;
+}
+
+@media (max-width: 1080px) {
+  .layout {
+    grid-template-columns: 300px minmax(0, 1fr);
+  }
+
+  .top-actions {
+    gap: 8px;
+  }
+}
